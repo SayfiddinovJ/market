@@ -1,0 +1,3 @@
+const supABaseUrl = 'https://tkgtxuowjrwxcsjabdjs.supabase.co';
+const supABaseKey =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRrZ3R4dW93anJ3eGNzamFiZGpzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA3MTcxNzksImV4cCI6MjA1NjI5MzE3OX0.tLHPvN0xC--Zty689Q_WMit8SI6gCbzq8DczKyMrG2s';
