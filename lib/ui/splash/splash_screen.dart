@@ -23,7 +23,9 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(const Duration(seconds: 3));
 
     var connectivityResult = await Connectivity().checkConnectivity();
-    bool isOnline = connectivityResult != ConnectivityResult.none;
+    bool isOnline =
+        connectivityResult.first == ConnectivityResult.wifi ||
+        connectivityResult.first == ConnectivityResult.mobile;
 
     if (mounted) {
       if (isOnline) {
@@ -43,14 +45,17 @@ class _SplashScreenState extends State<SplashScreen> {
           icon: Icon(Icons.signal_wifi_statusbar_connected_no_internet_4),
           iconColor: Colors.red,
           title: Text("Internet yo‘q!"),
-          content: Text("Iltimos, internet yoki Wi-Fi-ga ulang."),
+          content: Text("Iltimos, internet yoki Wi-Fi-ga ulaning."),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
                 checkInternetAndNavigate();
               },
-              child: Text("Qayta urinish"),
+              child: Text(
+                "Qayta urinish",
+                style: TextStyle(color: Colors.blue),
+              ),
             ),
           ],
         );
