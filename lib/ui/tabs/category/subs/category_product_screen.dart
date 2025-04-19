@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/models/product/product_model.dart';
 import 'package:market/repository/product_repo.dart';
 import 'package:market/ui/shimmer/shimmer_grid_tile.dart';
@@ -71,6 +72,11 @@ class _CategoryProductScreenState extends State<CategoryProductScreen> {
         scrolledUnderElevation: 0,
         backgroundColor: Colors.white,
         title: Text(widget.category),
+        titleTextStyle: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+          fontSize: 22.sp
+        ),
         actions: [
           IconButton(
             onPressed: () {

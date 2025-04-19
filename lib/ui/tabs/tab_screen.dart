@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:market/ui/tabs/category/category_screen.dart';
 import 'package:market/ui/tabs/home/home_screen.dart';
@@ -25,9 +24,10 @@ class _TabScreenState extends State<TabScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(index: currentIndex, children: screens),
-      bottomNavigationBar: CupertinoTabBar(
+      bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
-        activeColor: Colors.blue,
+        selectedItemColor: Colors.blue,
+
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),

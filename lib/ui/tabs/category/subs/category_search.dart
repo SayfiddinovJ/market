@@ -80,9 +80,16 @@ class CategorySearchDelegate extends SearchDelegate {
               return Center(child: Text("Xatolik: ${snapshot.error}"));
             }
             if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              return Center(child: Text("Mahsulot topilmadi!"));
+              return Center(
+                child: Text(
+                  "Mahsulot topilmadi!",
+                  style: TextStyle(
+                    fontSize: 24.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              );
             }
-
             return Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.w),
               child: GridView.builder(

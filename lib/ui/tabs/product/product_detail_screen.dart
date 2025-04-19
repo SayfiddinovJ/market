@@ -17,10 +17,9 @@ class ProductDetailScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: ListView(
-          physics: BouncingScrollPhysics(),
+        child: Stack(
           children: [
-            Stack(
+            ListView(
               children: [
                 GestureDetector(
                   onTap: () {
@@ -41,97 +40,100 @@ class ProductDetailScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Positioned(
-                  top: 20.h,
-                  left: 20.w,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey.withValues(alpha: 0.5),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        product.name,
+                        style: TextStyle(
+                          fontSize: 25.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      15.ph,
+                      Text(
+                        '${product.price} (so\'m/${product.type})',
+                        style: TextStyle(fontSize: 20.sp, color: Colors.blue,fontWeight: FontWeight.w600),
+                      ),
+                      15.ph,
+                      Text(
+                        "Kategoriyasi: ${product.category}",
+                        softWrap: true,
+                        style: TextStyle(fontSize: 20.sp),
+                      ),
+                      5.ph,
+                      Divider(),
+                      5.ph,
+                      Text(
+                        "Tavsif: ${product.description}",
+                        style: TextStyle(
+                          fontSize: 18.sp,
+                          color: Colors.grey.shade600,
+                        ),
+                      ),
+                      15.ph,
 
-                      borderRadius: BorderRadius.circular(100.r),
-                    ),
-                    child: IconButton(
-                      onPressed: () => Navigator.pop(context),
-                      icon: Icon(Icons.arrow_back, size: 25.sp),
-                    ),
+                      Row(
+                        children: [
+                          Text(
+                            'Mahsulot holati: ',
+                            style: TextStyle(fontSize: 18.sp,fontWeight: FontWeight.bold),
+                          ),
+                          Container(
+                            // width: double.infinity,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 10.w,
+                              vertical: 5.h,
+                            ),
+                            decoration: BoxDecoration(
+                              color:
+                              product.status == 'Bor'
+                                  ? Colors.green
+                                  : Colors.red,
+                              borderRadius: BorderRadius.circular(10.r),
+                            ),
+                            child: Center(
+                              child: Text(
+                                product.status == 'Bor' ? 'Bor ✅' : 'Mavjud emas❌',
+                                style: TextStyle(
+                                  fontSize: 22.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      20.ph,
+                      GlobalButton(
+                        onPressed: () {
+                          context.pop();
+                        },
+                        text: 'Ortga qaytish',
+                        textColor: Colors.white,
+                        fontSize: 25,
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    product.name,
-                    style: TextStyle(
-                      fontSize: 25.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  15.ph,
-                  Text(
-                    '${product.type}: ${product.price} so\'m',
-                    style: TextStyle(fontSize: 20.sp, color: Colors.blue),
-                  ),
-                  15.ph,
-                  Text(
-                    "Tavsif: ${product.description}",
-                    style: TextStyle(
-                      fontSize: 20.sp,
-                      color: Colors.grey.shade600,
-                    ),
-                  ),
-                  15.ph,
-                  Text(
-                    "Kategoriyasi: ${product.category}",
-                    softWrap: true,
-                    style: TextStyle(fontSize: 20.sp),
-                  ),
-                  15.ph,
-                  Row(
-                    children: [
-                      Text(
-                        'Mahsulot holati: ',
-                        style: TextStyle(fontSize: 18.sp),
-                      ),
-                      Container(
-                        // width: double.infinity,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 10.w,
-                          vertical: 5.h,
-                        ),
-                        decoration: BoxDecoration(
-                          color:
-                              product.status == 'Bor'
-                                  ? Colors.green
-                                  : Colors.red,
-                          borderRadius: BorderRadius.circular(10.r),
-                        ),
-                        child: Center(
-                          child: Text(
-                            product.status == 'Bor' ? 'Bor ✅' : 'Mavjud emas❌',
-                            style: TextStyle(
-                              fontSize: 22.sp,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
 
-                  20.ph,
-                  GlobalButton(
-                    onPressed: () {
-                      context.pop();
-                    },
-                    text: 'Ortga qaytish',
-                    textColor: Colors.white,
-                    fontSize: 25,
-                  ),
-                ],
+            Positioned(
+              top: 20.h,
+              left: 20.w,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey.withValues(alpha: 0.5),
+
+                  borderRadius: BorderRadius.circular(100.r),
+                ),
+                child: IconButton(
+                  onPressed: () => Navigator.pop(context),
+                  icon: Icon(Icons.arrow_back, size: 25.sp),
+                ),
               ),
             ),
           ],

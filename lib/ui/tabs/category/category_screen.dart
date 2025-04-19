@@ -15,7 +15,12 @@ class CategoryScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text('Kategoriyalar'),
+        title: const Text('Kategoriyalar'),
+        titleTextStyle: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 24.sp,
+          color: Colors.black
+        ),
         scrolledUnderElevation: 0,
       ),
       body: SingleChildScrollView(

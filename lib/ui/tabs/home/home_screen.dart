@@ -71,6 +71,11 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Barcha Mahsulotlar"),
+        titleTextStyle: TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+          fontSize: 24.sp,
+        ),
         backgroundColor: Colors.white,
         scrolledUnderElevation: 0,
         actions: [
