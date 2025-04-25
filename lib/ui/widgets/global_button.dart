@@ -45,7 +45,13 @@ class GlobalButton extends StatelessWidget {
               5.pw,
               Text(
                 text,
-                style: TextStyle(fontSize: fontSize.sp, color: textColor),
+                softWrap: true,
+                maxLines: 2,
+                style: TextStyle(
+                  fontSize: fontSize.sp,
+                  color: textColor,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ],
           ),

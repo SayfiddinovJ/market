@@ -41,7 +41,10 @@ class ProductDetailScreen extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20.w,
+                    vertical: 20.h,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -55,7 +58,11 @@ class ProductDetailScreen extends StatelessWidget {
                       15.ph,
                       Text(
                         '${product.price} (so\'m/${product.type})',
-                        style: TextStyle(fontSize: 20.sp, color: Colors.blue,fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                          fontSize: 20.sp,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                       15.ph,
                       Text(
@@ -75,11 +82,17 @@ class ProductDetailScreen extends StatelessWidget {
                       ),
                       15.ph,
 
-                      Row(
+                      Wrap(
                         children: [
-                          Text(
-                            'Mahsulot holati: ',
-                            style: TextStyle(fontSize: 18.sp,fontWeight: FontWeight.bold),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 5.h),
+                            child: Text(
+                              'Mahsulot holati: ',
+                              style: TextStyle(
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                           Container(
                             // width: double.infinity,
@@ -89,18 +102,18 @@ class ProductDetailScreen extends StatelessWidget {
                             ),
                             decoration: BoxDecoration(
                               color:
-                              product.status == 'Bor'
-                                  ? Colors.green
-                                  : Colors.red,
+                                  product.status == 'Bor'
+                                      ? Colors.green
+                                      : Colors.red,
                               borderRadius: BorderRadius.circular(10.r),
                             ),
-                            child: Center(
-                              child: Text(
-                                product.status == 'Bor' ? 'Bor ✅' : 'Mavjud emas❌',
-                                style: TextStyle(
-                                  fontSize: 22.sp,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                            child: Text(
+                              product.status == 'Bor'
+                                  ? 'Bor ✅'
+                                  : 'Mavjud emas❌',
+                              style: TextStyle(
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
@@ -113,7 +126,7 @@ class ProductDetailScreen extends StatelessWidget {
                         },
                         text: 'Ortga qaytish',
                         textColor: Colors.white,
-                        fontSize: 25,
+                        fontSize: 24,
                       ),
                     ],
                   ),
@@ -127,7 +140,6 @@ class ProductDetailScreen extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.grey.withValues(alpha: 0.5),
-
                   borderRadius: BorderRadius.circular(100.r),
                 ),
                 child: IconButton(

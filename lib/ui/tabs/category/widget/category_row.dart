@@ -38,7 +38,7 @@ class CategoryRow extends StatelessWidget {
                   borderRadius: BorderRadius.circular(100),
                   child: Image.asset(
                     image,
-                    height: 60.h,
+                    height: 60.w,
                     width: 60.w,
                     fit: BoxFit.fill,
                   ),
@@ -47,6 +47,7 @@ class CategoryRow extends StatelessWidget {
                 Text(
                   category,
                   softWrap: true,
+                  maxLines: 2,
                   style: TextStyle(
                     overflow: TextOverflow.ellipsis,
                     fontSize: 18.sp,

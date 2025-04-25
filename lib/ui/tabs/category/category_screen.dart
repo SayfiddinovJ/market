@@ -19,7 +19,8 @@ class CategoryScreen extends StatelessWidget {
         titleTextStyle: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 24.sp,
-          color: Colors.black
+          color: Colors.black,
+          overflow: TextOverflow.ellipsis
         ),
         scrolledUnderElevation: 0,
       ),

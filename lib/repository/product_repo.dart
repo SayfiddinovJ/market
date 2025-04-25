@@ -60,4 +60,20 @@ class ProductRepo {
       return [];
     }
   }
+
+  Future<List<ProductModel>> getRandomProductsPaginated({
+    int page = 1,
+    int limit = 10,
+  }) async {
+    final offset = (page - 1) * limit;
+
+    final response = await Supabase.instance.client.rpc(
+      'get_random_products_paginated',
+      params: {'limit_param': limit, 'offset_param': offset},
+    );
+
+    return (response as List)
+        .map((json) => ProductModel.fromJson(json))
+        .toList();
+  }
 }

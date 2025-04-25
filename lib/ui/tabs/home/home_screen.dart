@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     setState(() => _isLoading = true);
 
-    final newProducts = await context.read<ProductRepo>().getAllProducts(
+    final newProducts = await context.read<ProductRepo>().getRandomProductsPaginated(
       page: _page,
       limit: _limit,
     );

@@ -43,7 +43,7 @@ class ProductGridTile extends StatelessWidget {
                         tag: product.productId,
                         child: CachedNetworkImage(
                           imageUrl: product.image,
-                          height: 150,
+                          height: 150.h,
                           width: double.infinity,
                           fit: BoxFit.cover,
                         ),

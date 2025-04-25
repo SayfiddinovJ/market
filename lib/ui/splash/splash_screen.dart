@@ -81,8 +81,9 @@ class _SplashScreenState extends State<SplashScreen> {
                     style: TextStyle(
                       color: Colors.blue,
                       fontSize: 50.sp,
-                      fontWeight: FontWeight.w900,
+                      fontWeight: FontWeight.bold,
                     ),
+                    maxLines: 3,
                     textAlign: TextAlign.center,
                     softWrap: true,
                   ),
@@ -93,22 +94,22 @@ class _SplashScreenState extends State<SplashScreen> {
           Positioned(
             top: -130,
             right: -60,
-            child: Circle(height: 250, width: 250, color: Colors.blue),
+            child: Circle(height: 250.h, width: 250.h, color: Colors.blue),
           ),
           Positioned(
             top: 30,
             right: 220,
-            child: Circle(height: 100, width: 100, color: Colors.blue),
+            child: Circle(height: 100.h, width: 100.h, color: Colors.blue),
           ),
           Positioned(
             bottom: -130,
             left: -60,
-            child: Circle(height: 250, width: 250, color: Colors.blue),
+            child: Circle(height: 250.h, width: 250.h, color: Colors.blue),
           ),
           Positioned(
             bottom: 30,
             left: 220,
-            child: Circle(height: 100, width: 100, color: Colors.blue),
+            child: Circle(height: 100.h, width: 100.h, color: Colors.blue),
           ),
         ],
       ),

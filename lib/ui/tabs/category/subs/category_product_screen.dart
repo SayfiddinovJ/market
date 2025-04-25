@@ -75,7 +75,8 @@ class _CategoryProductScreenState extends State<CategoryProductScreen> {
         titleTextStyle: TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.bold,
-          fontSize: 22.sp
+          fontSize: 22.sp,
+          overflow: TextOverflow.ellipsis
         ),
         actions: [
           IconButton(
