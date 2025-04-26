@@ -124,6 +124,7 @@ class CategorySearchDelegate extends SearchDelegate {
               Icon(Icons.search, size: 100.h),
               Text(
                 'Bugun qanday mahsulot qidirmoqchisiz?',
+                textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
               ),
             ],

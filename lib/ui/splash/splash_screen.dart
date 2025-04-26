@@ -82,6 +82,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       color: Colors.blue,
                       fontSize: 50.sp,
                       fontWeight: FontWeight.bold,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     maxLines: 3,
                     textAlign: TextAlign.center,

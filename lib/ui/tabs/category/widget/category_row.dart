@@ -44,17 +44,18 @@ class CategoryRow extends StatelessWidget {
                   ),
                 ),
                 15.pw,
-                Text(
-                  category,
-                  softWrap: true,
-                  maxLines: 2,
-                  style: TextStyle(
-                    overflow: TextOverflow.ellipsis,
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Text(
+                    category,
+                    softWrap: true,
+                    maxLines: 2,
+                    style: TextStyle(
+                      overflow: TextOverflow.ellipsis,
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-                Spacer(),
                 const Icon(Icons.arrow_forward_ios),
               ],
             ),

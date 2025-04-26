@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/models/product/product_model.dart';
 import 'package:market/ui/tabs/product/product_detail_screen.dart';
+import 'package:market/utils/extensions/extensions.dart';
 import 'package:market/utils/navigation/navigation.dart';
 
 class ProductGridTile extends StatelessWidget {
@@ -33,23 +34,21 @@ class ProductGridTile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Stack(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(10.r),
-                      ),
-                      child: Hero(
-                        tag: product.productId,
-                        child: CachedNetworkImage(
-                          imageUrl: product.image,
-                          height: 150.h,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
+                Flexible(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(10.r),
+                    ),
+                    child: Hero(
+                      tag: product.productId,
+                      child: CachedNetworkImage(
+                        imageUrl: product.image,
+                        height: 150.h,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
                       ),
                     ),
-                  ],
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.all(4.w),
@@ -61,6 +60,7 @@ class ProductGridTile extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       overflow: TextOverflow.ellipsis,
                     ),
+                    textScaler: TextScaler.noScaling,
                   ),
                 ),
                 Padding(
@@ -69,6 +69,7 @@ class ProductGridTile extends StatelessWidget {
                     "${product.price}so'm",
                     softWrap: true,
                     overflow: TextOverflow.ellipsis,
+                    textScaler: TextScaler.noScaling,
                     style: TextStyle(fontSize: 14.sp, color: Colors.blue),
                   ),
                 ),
@@ -76,7 +77,11 @@ class ProductGridTile extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 4.w),
                   child: Row(
                     children: [
-                      Text('Holati: '),
+                      Text(
+                        'Holati: ',
+                        textScaler: TextScaler.noScaling,
+                        style: TextStyle(fontSize: 14.sp, color: Colors.black),
+                      ),
                       Container(
                         // width: double.infinity,
                         padding: EdgeInsets.symmetric(
@@ -97,12 +102,14 @@ class ProductGridTile extends StatelessWidget {
                               fontSize: 12.sp,
                               fontWeight: FontWeight.bold,
                             ),
+                            textScaler: TextScaler.noScaling,
                           ),
                         ),
                       ),
                     ],
                   ),
                 ),
+                5.ph,
               ],
             ),
           ),
