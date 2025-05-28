@@ -67,13 +67,10 @@ class _CategoryProductScreenState extends State<CategoryProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         scrolledUnderElevation: 0,
-        backgroundColor: Colors.white,
         title: Text(widget.category),
         titleTextStyle: TextStyle(
-          color: Colors.black,
           fontWeight: FontWeight.bold,
           fontSize: 22.sp,
           overflow: TextOverflow.ellipsis

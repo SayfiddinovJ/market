@@ -52,10 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 Navigator.of(context).pop();
                 checkInternetAndNavigate();
               },
-              child: Text(
-                "Qayta urinish",
-                style: TextStyle(color: Colors.blue),
-              ),
+              child: Text("Qayta urinish"),
             ),
           ],
         );

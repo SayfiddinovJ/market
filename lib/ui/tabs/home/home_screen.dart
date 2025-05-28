@@ -34,10 +34,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
     setState(() => _isLoading = true);
 
-    final newProducts = await context.read<ProductRepo>().getRandomProductsPaginated(
-      page: _page,
-      limit: _limit,
-    );
+    final newProducts = await context
+        .read<ProductRepo>()
+        .getRandomProductsPaginated(page: _page, limit: _limit);
 
     if (newProducts.length < _limit) {
       _hasMore = false;
@@ -68,15 +67,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Barcha Mahsulotlar"),
-        titleTextStyle: TextStyle(
-          fontWeight: FontWeight.bold,
-          color: Colors.black,
-          fontSize: 24.sp,
-        ),
-        backgroundColor: Colors.white,
+        titleTextStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.sp),
         scrolledUnderElevation: 0,
         actions: [
           IconButton(

@@ -25,9 +25,6 @@ class _TabScreenState extends State<TabScreen> {
     return Scaffold(
       body: IndexedStack(index: currentIndex, children: screens),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        selectedItemColor: Colors.blue,
-
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),

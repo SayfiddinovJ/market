@@ -23,7 +23,6 @@ class CategoryRow extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12.r),
-        splashColor: Colors.blue.shade300,
         child: Padding(
           padding: EdgeInsets.all(10.w),
           child: Row(

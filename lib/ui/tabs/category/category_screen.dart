@@ -11,14 +11,11 @@ class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
         title: const Text('Kategoriyalar'),
         titleTextStyle: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 24.sp,
-          color: Colors.black,
           overflow: TextOverflow.ellipsis,
         ),
         scrolledUnderElevation: 0,

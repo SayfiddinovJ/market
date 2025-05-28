@@ -19,14 +19,12 @@ class ProductGridTile extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         borderRadius: BorderRadius.circular(12.r),
-        splashColor: Colors.grey.shade50,
         onTap: () {
           context.push(ProductDetailScreen(product: product));
         },
         child: FadeInUp(
           duration: const Duration(milliseconds: 500),
           child: Card(
-            color: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12.r),
             ),
