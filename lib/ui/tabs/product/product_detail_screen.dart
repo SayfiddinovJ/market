@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/models/product/product_model.dart';
 import 'package:market/ui/widgets/global_button.dart';
 import 'package:market/utils/extensions/extensions.dart';
-import 'package:market/utils/navigation/navigation.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   const ProductDetailScreen({super.key, required this.product});
@@ -15,7 +14,6 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: Stack(
           children: [
@@ -31,13 +29,10 @@ class ProductDetailScreen extends StatelessWidget {
                       doubleTapZoomable: true,
                     );
                   },
-                  child: Hero(
-                    tag: product.productId,
-                    child: CachedNetworkImage(
-                      imageUrl: product.image,
-                      width: double.infinity,
-                      fit: BoxFit.fill,
-                    ),
+                  child: CachedNetworkImage(
+                    imageUrl: product.image,
+                    width: double.infinity,
+                    fit: BoxFit.fill,
                   ),
                 ),
                 Padding(
@@ -81,7 +76,6 @@ class ProductDetailScreen extends StatelessWidget {
                         ),
                       ),
                       15.ph,
-
                       Wrap(
                         children: [
                           Padding(
@@ -122,10 +116,9 @@ class ProductDetailScreen extends StatelessWidget {
                       20.ph,
                       GlobalButton(
                         onPressed: () {
-                          context.pop();
+                          Navigator.pop(context);
                         },
                         text: 'Ortga qaytish',
-                        textColor: Colors.white,
                         fontSize: 24,
                       ),
                     ],
@@ -133,7 +126,6 @@ class ProductDetailScreen extends StatelessWidget {
                 ),
               ],
             ),
-
             Positioned(
               top: 20.h,
               left: 20.w,

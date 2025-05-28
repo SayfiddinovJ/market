@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/repository/product_repo.dart';
-import 'package:market/ui/splash/splash_screen.dart';
+import 'package:market/routes/app_routes.dart';
 import 'package:market/utils/constants/supabase_keys.dart';
 import 'package:market/utils/theme/app_theme.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -40,7 +40,8 @@ class MyApp extends StatelessWidget {
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: ThemeMode.system,
-          home: SplashScreen(),
+          onGenerateRoute: AppRoutes.generateRoute,
+          initialRoute: RouteNames.splashScreen,
         );
       },
     );

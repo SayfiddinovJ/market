@@ -3,9 +3,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/models/product/product_model.dart';
-import 'package:market/ui/tabs/product/product_detail_screen.dart';
+import 'package:market/routes/app_routes.dart';
 import 'package:market/utils/extensions/extensions.dart';
-import 'package:market/utils/navigation/navigation.dart';
 
 class ProductGridTile extends StatelessWidget {
   final ProductModel product;
@@ -20,7 +19,11 @@ class ProductGridTile extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(12.r),
         onTap: () {
-          context.push(ProductDetailScreen(product: product));
+          Navigator.pushNamed(
+            context,
+            RouteNames.productDetail,
+            arguments: product,
+          );
         },
         child: FadeInUp(
           duration: const Duration(milliseconds: 500),
@@ -37,14 +40,11 @@ class ProductGridTile extends StatelessWidget {
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(10.r),
                     ),
-                    child: Hero(
-                      tag: product.productId,
-                      child: CachedNetworkImage(
-                        imageUrl: product.image,
-                        height: 150.h,
-                        width: double.infinity,
-                        fit: BoxFit.cover,
-                      ),
+                    child: CachedNetworkImage(
+                      imageUrl: product.image,
+                      height: 150.h,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
@@ -78,7 +78,7 @@ class ProductGridTile extends StatelessWidget {
                       Text(
                         'Holati: ',
                         textScaler: TextScaler.noScaling,
-                        style: TextStyle(fontSize: 14.sp, color: Colors.black),
+                        style: TextStyle(fontSize: 14.sp),
                       ),
                       Container(
                         // width: double.infinity,

@@ -1,9 +1,8 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:market/ui/tabs/tab_screen.dart';
+import 'package:market/routes/app_routes.dart';
 import 'package:market/utils/images/app_images.dart';
-import 'package:market/utils/navigation/navigation.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -29,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     if (mounted) {
       if (isOnline) {
-        context.pushAndRemoveUntil(TabScreen());
+        Navigator.pushReplacementNamed(context, RouteNames.tabs);
       } else {
         showNoInternetDialog();
       }

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/models/category/categories.dart';
-import 'package:market/ui/tabs/category/subs/category_product_screen.dart';
+import 'package:market/routes/app_routes.dart';
 import 'package:market/ui/tabs/category/widget/category_tile.dart';
-import 'package:market/utils/navigation/navigation.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});
@@ -26,8 +25,10 @@ class CategoryScreen extends StatelessWidget {
             return CategoryRow(
               category: categories[index],
               onTap: () {
-                context.push(
-                  CategoryProductScreen(category: categories[index]),
+                Navigator.pushNamed(
+                  context,
+                  RouteNames.category,
+                  arguments: categories[index],
                 );
               },
               image: categoriesImage[index],

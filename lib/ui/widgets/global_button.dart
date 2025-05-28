@@ -9,7 +9,6 @@ class GlobalButton extends StatelessWidget {
     required this.text,
     this.icon = '',
     this.color = Colors.blue,
-    this.textColor = Colors.white,
     this.fontSize = 16,
   });
 
@@ -17,7 +16,6 @@ class GlobalButton extends StatelessWidget {
   final String text;
   final String icon;
   final Color color;
-  final Color textColor;
   final double fontSize;
 
   @override
@@ -26,7 +24,7 @@ class GlobalButton extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: ElevatedButton(
         style: ButtonStyle(
-          backgroundColor: WidgetStateProperty.all(color),
+          // backgroundColor: WidgetStateProperty.all(color),
           shape: WidgetStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.r)),
           ),
@@ -49,7 +47,6 @@ class GlobalButton extends StatelessWidget {
                 maxLines: 2,
                 style: TextStyle(
                   fontSize: fontSize.sp,
-                  color: textColor,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
