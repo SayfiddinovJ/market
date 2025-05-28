@@ -27,7 +27,7 @@ class CategoryScreen extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(
                   context,
-                  RouteNames.category,
+                  RouteNames.categoryProductScreen,
                   arguments: categories[index],
                 );
               },

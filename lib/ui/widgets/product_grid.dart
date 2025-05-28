@@ -21,7 +21,7 @@ class ProductGridTile extends StatelessWidget {
         onTap: () {
           Navigator.pushNamed(
             context,
-            RouteNames.productDetail,
+            RouteNames.productDetailScreen,
             arguments: product,
           );
         },

@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     if (mounted) {
       if (isOnline) {
-        Navigator.pushReplacementNamed(context, RouteNames.tabs);
+        Navigator.pushReplacementNamed(context, RouteNames.homeScreen);
       } else {
         showNoInternetDialog();
       }
@@ -110,7 +110,6 @@ class _SplashScreenState extends State<SplashScreen> {
           ),
         ],
       ),
-      backgroundColor: Colors.white,
     );
   }
 }
