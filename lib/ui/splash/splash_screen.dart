@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     if (mounted) {
       if (isOnline) {
-        Navigator.pushReplacementNamed(context, RouteNames.homeScreen);
+        Navigator.pushReplacementNamed(context, RouteNames.tabs);
       } else {
         showNoInternetDialog();
       }

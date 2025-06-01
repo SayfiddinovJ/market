@@ -6,7 +6,6 @@ import 'package:market/repository/product_repo.dart';
 import 'package:market/ui/shimmer/shimmer_grid_tile.dart';
 import 'package:market/ui/tabs/search/search_screen.dart';
 import 'package:market/ui/widgets/product_grid.dart';
-import 'package:market/utils/theme/app_theme.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,21 +14,8 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
-  late TabController tabController;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   tabController = TabController(length: 13, vsync: this);
-  // }
-
-  // @override
-  // void dispose() {
-  //   tabController.dispose();
-  //   super.dispose();
-  // }
-
+class _HomeScreenState extends State<HomeScreen>
+    with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   final ScrollController _scrollController = ScrollController();
   final List<ProductModel> _products = [];
   bool _isLoading = false;
@@ -81,10 +67,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text("SSL Market"),
-        titleTextStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.sp),
         scrolledUnderElevation: 0,
         actions: [
           IconButton(
@@ -94,36 +80,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             icon: Icon(Icons.search),
           ),
         ],
-        bottom: TabBar(
-          indicatorColor: AppTheme.primaryColor,
-          dividerHeight: 0,
-          labelColor: AppTheme.primaryColor,
-          labelPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 15.w),
-          controller: tabController,
-          isScrollable: true,
-          tabAlignment: TabAlignment.start,
-          splashBorderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10.r),
-            topRight: Radius.circular(10.r),
-          ),
-          tabs: const [
-            Tab(text: "Barchasi"),
-            Tab(text: "Aksessuarlar"),
-            Tab(text: "Kolbasalar"),
-            Tab(text: "Oziq-ovqatlar"),
-            Tab(text: "Parfyumeriyalar"),
-            Tab(text: "Don mahsulotlari"),
-            Tab(text: "Muzqaymoqlar"),
-            Tab(text: "Suvlar"),
-            Tab(text: "Pecheniylar"),
-            Tab(text: "Pecheniylar"),
-            Tab(text: "Uy ro'zg'or buyumlari"),
-            Tab(text: "Xozmag"),
-            Tab(text: "Boshqalar"),
-          ],
-        ),
       ),
-
       body: SafeArea(
         child:
             _products.isEmpty && _isLoading
@@ -161,4 +118,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
