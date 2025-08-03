@@ -16,22 +16,16 @@ dependencies:
   flutter_screenutil: ^5.9.3
   cached_network_image: ^3.4.1
   easy_image_viewer: ^1.5.1
-  supabase_flutter: ^2.9.0
+  supabase_flutter: ^2.9.1
   shimmer: ^3.0.0
   animate_do: ^4.2.0
   connectivity_plus: ^6.1.4
 
 dev_dependencies:
-  flutter_launcher_icons: ^0.14.3
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^5.0.0
-
-flutter_icons:
-  android: true
-  ios: true
-  image_path: "assets/icons/market_logo.png"
+  flutter_lints: ^6.0.0
 
 flutter:
 
