@@ -17,9 +17,9 @@ dependencies:
   cached_network_image: ^3.4.1
   easy_image_viewer: ^1.5.1
   supabase_flutter: ^2.9.1
-  shimmer: ^3.0.0
-  animate_do: ^4.2.0
   connectivity_plus: ^6.1.4
+  liquid_glass_renderer: ^0.1.1-dev.10
+  skeletonizer: ^2.1.0+1
 
 dev_dependencies:
   flutter_test:
