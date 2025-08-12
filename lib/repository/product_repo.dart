@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:market/models/product/product_model.dart';
+import 'package:market/data/models/product/product_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ProductRepo {
