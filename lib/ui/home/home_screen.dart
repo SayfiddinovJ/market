@@ -128,6 +128,13 @@ class HomeScreen extends StatelessWidget {
                   child: Container(
                     margin: EdgeInsets.symmetric(horizontal: 8.w),
                     decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.shade400,
+                          blurRadius: 5,
+                          offset: Offset(0, 3),
+                        ),
+                      ],
                       color:
                           Theme.of(
                             context,
@@ -139,15 +146,36 @@ class HomeScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(12.r),
-                              topRight: Radius.circular(12.r),
-                            ),
-                            child: Image.asset(
-                              categoriesImage[index],
-                              fit: BoxFit.fill,
-                            ),
+                          child: Stack(
+                            children: [
+                              Positioned.fill(
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(12.r),
+                                    topRight: Radius.circular(12.r),
+                                  ),
+                                  child: Image.asset(
+                                    categoriesImage[index],
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.topLeft,
+                                child: Container(
+                                  margin: EdgeInsets.all(5.w),
+                                  padding: EdgeInsets.all(5.w),
+                                  decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(12.r),
+                                  ),
+                                  child: Text(
+                                    'Bor yoki yo\'q',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                         5.ph,
@@ -165,6 +193,30 @@ class HomeScreen extends StatelessWidget {
                 mainAxisSpacing: 12, // Vertikal bo'shliq
                 crossAxisSpacing: 0, // Gorizontal bo'shliq
                 childAspectRatio: 0.7, // Elementlar proporsiyasi
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+                child: ZoomTapAnimation(
+                  onTap: () {},
+                  child: Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.symmetric(vertical: 10.h),
+                    decoration: BoxDecoration(
+                      color: Colors.blue.shade500,
+                      borderRadius: BorderRadius.circular(16.r),
+                    ),
+                    child: Text(
+                      'Barcha mahsulotlar',
+                      style: TextStyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
           ],

@@ -10,7 +10,7 @@ class AppTheme {
     primaryColor: Colors.blue,
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: AppBarTheme(
-      backgroundColor: Colors.white.withValues(alpha: 0.5),
+      backgroundColor: Colors.white.withValues(alpha: 0.7),
       foregroundColor: Colors.black,
       surfaceTintColor: Colors.white,
       elevation: 1,
@@ -32,7 +32,7 @@ class AppTheme {
     scaffoldBackgroundColor: Colors.black,
     extensions: [ContainerColors(background: Colors.grey.shade800)],
     appBarTheme: AppBarTheme(
-      backgroundColor: Colors.black.withValues(alpha: 0.7),
+      backgroundColor: Colors.black.withValues(alpha: 0.8),
       foregroundColor: Colors.white,
       surfaceTintColor: Colors.black,
       elevation: 1,

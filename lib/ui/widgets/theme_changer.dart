@@ -18,8 +18,8 @@ class ThemeChanger extends StatelessWidget {
           },
           icon: Icon(
             themeCubit.state == ThemeMode.light
-                ? Icons.light_mode
-                : Icons.dark_mode_outlined,
+                ? Icons.dark_mode_outlined
+                : Icons.light_mode_outlined,
           ),
         );
       },
