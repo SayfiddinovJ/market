@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:market/data/models/category/categories.dart';
+import 'package:market/ui/widgets/zoom_tap_animation.dart';
+
+class CategoriesList extends StatelessWidget {
+  const CategoriesList({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 10.h),
+      child: Row(
+        children: List.generate(categories.length, (index) {
+          return Column(
+            children: [
+              ZoomTapAnimation(
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 5.w),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(13.r),
+                    border: Border.all(color: Colors.grey),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12.r),
+                    child: Image.asset(
+                      categoriesImage[index],
+                      height: 70.w,
+                      width: 70.w,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          );
+        }),
+      ),
+    );
+  }
+}
