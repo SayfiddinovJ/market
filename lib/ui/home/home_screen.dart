@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/data/models/category/categories.dart';
+import 'package:market/routes/app_routes.dart';
 import 'package:market/ui/home/widgets/categories_list.dart';
 import 'package:market/ui/home/widgets/search_container.dart';
 import 'package:market/ui/widgets/global_button.dart';
@@ -30,7 +31,12 @@ class HomeScreen extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
           ),
           actions: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, RouteNames.search);
+              },
+              icon: Icon(Icons.search),
+            ),
             ThemeChanger(),
           ],
         ),
@@ -76,9 +82,7 @@ class HomeScreen extends StatelessWidget {
                 childAspectRatio: 0.7, // Elementlar proporsiyasi
               ),
             ),
-            SliverToBoxAdapter(
-              child: GlobalButton(),
-            ),
+            SliverToBoxAdapter(child: GlobalButton()),
           ],
         ),
       ),
