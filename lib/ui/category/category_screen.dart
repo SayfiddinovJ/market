@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:market/data/models/category/categories.dart';
 import 'package:market/routes/app_routes.dart';
+import 'package:market/ui/widgets/product_card.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key, required this.name});
@@ -26,6 +28,22 @@ class CategoryScreen extends StatelessWidget {
                 Navigator.pushNamed(context, RouteNames.search);
               },
               icon: Icon(Icons.search),
+            ),
+          ],
+        ),
+        body: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(child: SizedBox(height: kToolbarHeight)),
+            SliverGrid(
+              delegate: SliverChildBuilderDelegate((context, index) {
+                return ProductCard(index: index);
+              }, childCount: categoriesImage.length),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, // Qatorlar soni
+                mainAxisSpacing: 12, // Vertikal bo'shliq
+                crossAxisSpacing: 0, // Gorizontal bo'shliq
+                childAspectRatio: 0.7, // Elementlar proporsiyasi
+              ),
             ),
           ],
         ),
