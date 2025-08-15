@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:market/data/models/category/categories.dart';
+import 'package:market/data/models/product/product_model.dart';
 import 'package:market/routes/app_routes.dart';
 import 'package:market/ui/widgets/product_card.dart';
 
@@ -36,7 +37,26 @@ class CategoryScreen extends StatelessWidget {
             SliverToBoxAdapter(child: SizedBox(height: kToolbarHeight)),
             SliverGrid(
               delegate: SliverChildBuilderDelegate((context, index) {
-                return ProductCard(index: index);
+                return ProductCard(
+                  index: index,
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      RouteNames.product,
+                      arguments: ProductModel(
+                        productId: index.toString(),
+                        name: 'Name ${categories[index]}',
+                        type: 'Type ${categories[index]}',
+                        price: 'Price $index',
+                        image: categoriesImage[index],
+                        status: index.isEven ? "Bor" : "Yo'q",
+                        category: categories[index],
+                        description: 'This is description',
+                        createdAt: 'createdAt',
+                      ),
+                    );
+                  },
+                );
               }, childCount: categoriesImage.length),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, // Qatorlar soni

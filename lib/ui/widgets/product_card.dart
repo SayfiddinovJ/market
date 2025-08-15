@@ -5,13 +5,15 @@ import 'package:market/ui/widgets/zoom_tap_animation.dart';
 import 'package:market/utils/extensions/extensions.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key, required this.index});
+  const ProductCard({super.key, required this.index, required this.onTap});
 
   final int index;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return ZoomTapAnimation(
+      onTap: onTap,
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 8.w),
         decoration: BoxDecoration(

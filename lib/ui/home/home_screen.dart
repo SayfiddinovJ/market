@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/data/models/category/categories.dart';
+import 'package:market/data/models/product/product_model.dart';
 import 'package:market/routes/app_routes.dart';
 import 'package:market/ui/home/widgets/categories_list.dart';
 import 'package:market/ui/home/widgets/search_container.dart';
@@ -73,7 +74,26 @@ class HomeScreen extends StatelessWidget {
             ),
             SliverGrid(
               delegate: SliverChildBuilderDelegate((context, index) {
-                return ProductCard(index: index);
+                return ProductCard(
+                  index: index,
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      RouteNames.product,
+                      arguments: ProductModel(
+                        productId: index.toString(),
+                        name: 'Name ${categories[index]}',
+                        type: 'Type ${categories[index]}',
+                        price: 'Price $index',
+                        image: categoriesImage[index],
+                        status: index.isEven ? "Bor" : "Yo'q",
+                        category: categories[index],
+                        description: 'This is description',
+                        createdAt: 'createdAt',
+                      ),
+                    );
+                  },
+                );
               }, childCount: categoriesImage.length),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, // Qatorlar soni

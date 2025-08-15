@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:market/data/models/product/product_model.dart';
 import 'package:market/ui/category/category_screen.dart';
 import 'package:market/ui/home/home_screen.dart';
+import 'package:market/ui/product/product_screen.dart';
 import 'package:market/ui/search/search_screen.dart';
 import 'package:market/ui/splash/splash_screen.dart';
 
@@ -10,6 +12,7 @@ class RouteNames {
   static const String home = "/home";
   static const String search = "/search";
   static const String category = "/category";
+  static const String product = "/product";
 }
 
 class AppRoutes {
@@ -25,6 +28,12 @@ class AppRoutes {
         return CupertinoPageRoute(
           builder:
               (context) => CategoryScreen(name: settings.arguments.toString()),
+        );
+      case RouteNames.product:
+        return CupertinoPageRoute(
+          builder:
+              (context) =>
+                  ProductScreen(product: settings.arguments as ProductModel),
         );
       default:
         return CupertinoPageRoute(
