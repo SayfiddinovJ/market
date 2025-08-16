@@ -1,13 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:market/data/models/category/categories.dart';
+import 'package:market/data/models/product/product_model.dart';
 import 'package:market/ui/widgets/zoom_tap_animation.dart';
 import 'package:market/utils/extensions/extensions.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key, required this.index, required this.onTap});
+  const ProductCard({super.key, required this.product, required this.onTap});
 
-  final int index;
+  final ProductModel product;
   final VoidCallback onTap;
 
   @override
@@ -41,9 +42,9 @@ class ProductCard extends StatelessWidget {
                         topRight: Radius.circular(12.r),
                       ),
                       child: Hero(
-                        tag: index.toString(),
-                        child: Image.asset(
-                          categoriesImage[index],
+                        tag: product.productId,
+                        child: CachedNetworkImage(
+                          imageUrl: product.image,
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -55,11 +56,12 @@ class ProductCard extends StatelessWidget {
                       margin: EdgeInsets.all(5.w),
                       padding: EdgeInsets.all(5.w),
                       decoration: BoxDecoration(
-                        color: Colors.red,
+                        color:
+                            product.status == 'Bor' ? Colors.green : Colors.red,
                         borderRadius: BorderRadius.circular(12.r),
                       ),
                       child: Text(
-                        'Bor yoki yo\'q',
+                        product.status,
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
@@ -68,9 +70,9 @@ class ProductCard extends StatelessWidget {
               ),
             ),
             5.ph,
-            Text('  Product name'),
+            Text('  ${product.name}'),
             5.ph,
-            Text('  Product price'),
+            Text('  ${product.price}'),
             5.ph,
           ],
         ),

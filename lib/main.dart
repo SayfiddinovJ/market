@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:market/bloc/product_bloc.dart';
 import 'package:market/cubit/theme_cubit.dart';
 import 'package:market/data/storage/storage_repository.dart';
 import 'package:market/repository/product_repo.dart';
@@ -28,7 +29,10 @@ class App extends StatelessWidget {
     return MultiRepositoryProvider(
       providers: [RepositoryProvider(create: (context) => ProductRepo())],
       child: MultiBlocProvider(
-        providers: [BlocProvider.value(value: themeCubit)],
+        providers: [
+          BlocProvider.value(value: themeCubit),
+          BlocProvider(create: (context) => ProductBloc(context.read<ProductRepo>())),
+        ],
         child: MyApp(),
       ),
     );

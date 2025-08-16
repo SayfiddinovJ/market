@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/data/models/product/product_model.dart';
@@ -31,7 +32,10 @@ class ProductScreen extends StatelessWidget {
               SizedBox(height: kToolbarHeight),
               Hero(
                 tag: product.productId,
-                child: Image.asset(product.image, fit: BoxFit.fill),
+                child: CachedNetworkImage(
+                  imageUrl: product.image,
+                  fit: BoxFit.fill,
+                ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
@@ -57,7 +61,7 @@ class ProductScreen extends StatelessWidget {
                     ),
                     10.ph,
                     Text(
-                      '${product.price}so\'m ${product.type}',
+                      '${product.price}so\'m/${product.type.toLowerCase()}',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 35.sp,
@@ -70,7 +74,10 @@ class ProductScreen extends StatelessWidget {
                           margin: EdgeInsets.only(right: 10.w),
                           padding: EdgeInsets.all(5.w),
                           decoration: BoxDecoration(
-                            color: Colors.green,
+                            color:
+                                product.status == 'Bor'
+                                    ? Colors.green
+                                    : Colors.red,
                             shape: BoxShape.circle,
                           ),
                         ),
@@ -79,7 +86,10 @@ class ProductScreen extends StatelessWidget {
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 20.sp,
-                            color: Colors.green,
+                            color:
+                                product.status == 'Bor'
+                                    ? Colors.green
+                                    : Colors.red,
                           ),
                         ),
                       ],

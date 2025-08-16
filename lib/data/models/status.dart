@@ -1,1 +1,1 @@
-enum FormStatus { pure, loading, unloaded, success, failure, unauthorized }
+enum Status { pure, loading, unloaded, success, failure, unauthorized }

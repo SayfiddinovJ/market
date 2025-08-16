@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:market/data/models/product/product_model.dart';
+import 'package:market/data/models/universal_data.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ProductRepo {
@@ -61,19 +62,25 @@ class ProductRepo {
     }
   }
 
-  Future<List<ProductModel>> getRandomProductsPaginated({
+  Future<UniversalData> getRandomProductsPaginated({
     int page = 1,
     int limit = 10,
   }) async {
-    final offset = (page - 1) * limit;
+    try {
+      final offset = (page - 1) * limit;
 
-    final response = await Supabase.instance.client.rpc(
-      'get_random_products_paginated',
-      params: {'limit_param': limit, 'offset_param': offset},
-    );
-
-    return (response as List)
-        .map((json) => ProductModel.fromJson(json))
-        .toList();
+      final response = await Supabase.instance.client.rpc(
+        'get_random_products_paginated',
+        params: {'limit_param': limit, 'offset_param': offset},
+      );
+      return UniversalData(
+        data:
+            (response as List)
+                .map((json) => ProductModel.fromJson(json))
+                .toList(),
+      );
+    } catch (error) {
+      return UniversalData(error: error.toString());
+    }
   }
 }

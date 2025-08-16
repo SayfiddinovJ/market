@@ -38,7 +38,17 @@ class CategoryScreen extends StatelessWidget {
             SliverGrid(
               delegate: SliverChildBuilderDelegate((context, index) {
                 return ProductCard(
-                  index: index,
+                  product: ProductModel(
+                    productId: '',
+                    name: '',
+                    type: '',
+                    price: '',
+                    image: '',
+                    status: '',
+                    category: '',
+                    description: '',
+                    createdAt: '',
+                  ),
                   onTap: () {
                     Navigator.pushNamed(
                       context,
