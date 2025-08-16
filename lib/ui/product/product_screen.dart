@@ -29,7 +29,10 @@ class ProductScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: kToolbarHeight),
-              Image.asset(product.image, fit: BoxFit.fill),
+              Hero(
+                tag: product.productId,
+                child: Image.asset(product.image, fit: BoxFit.fill),
+              ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
                 child: Column(
