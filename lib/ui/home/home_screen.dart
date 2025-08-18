@@ -11,6 +11,7 @@ import 'package:market/ui/home/widgets/search_container.dart';
 import 'package:market/ui/widgets/global_button.dart';
 import 'package:market/ui/widgets/product_card.dart';
 import 'package:market/ui/widgets/theme_changer.dart';
+import 'package:market/utils/extensions/extensions.dart';
 import 'package:market/utils/images/app_images.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -21,10 +22,14 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen>
+    with AutomaticKeepAliveClientMixin {
   void _init() {
     BlocProvider.of<ProductBloc>(context).add(GetProductsEvent());
   }
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
@@ -34,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return SafeArea(
       child: Scaffold(
         extendBodyBehindAppBar: true,
@@ -96,18 +102,38 @@ class _HomeScreenState extends State<HomeScreen> {
                 SliverSkeletonizer(
                   enabled: state.status == Status.loading,
                   child: SliverGrid(
-                    delegate: SliverChildBuilderDelegate((context, index) {
-                      return ProductCard(
-                        product: state.products[index],
-                        onTap: () {
-                          Navigator.pushNamed(
-                            context,
-                            RouteNames.product,
-                            arguments: state.products[index],
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) {
+                        if (state.status == Status.loading) {
+                          return Container(
+                            margin: EdgeInsets.all(8),
+                            height: 100,
+                            decoration: BoxDecoration(
+                              color:
+                                  Theme.of(
+                                    context,
+                                  ).extension<ContainerColors>()!.background,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
                           );
-                        },
-                      );
-                    }, childCount: state.products.length),
+                        } else {
+                          return ProductCard(
+                            product: state.products[index],
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                RouteNames.product,
+                                arguments: state.products[index],
+                              );
+                            },
+                          );
+                        }
+                      },
+                      childCount:
+                          state.status == Status.loading
+                              ? 10
+                              : state.products.length,addAutomaticKeepAlives: true
+                    ),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2, // Qatorlar soni
                       mainAxisSpacing: 12, // Vertikal bo'shliq

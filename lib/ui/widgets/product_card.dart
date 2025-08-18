@@ -44,8 +44,12 @@ class ProductCard extends StatelessWidget {
                       child: Hero(
                         tag: product.productId,
                         child: CachedNetworkImage(
+                          key: ValueKey(product.productId),
                           imageUrl: product.image,
                           fit: BoxFit.fill,
+                          placeholder:
+                              (context, url) =>
+                                  Container(color: Colors.grey.shade300),
                         ),
                       ),
                     ),
@@ -69,11 +73,31 @@ class ProductCard extends StatelessWidget {
                 ],
               ),
             ),
-            5.ph,
-            Text('  ${product.name}'),
-            5.ph,
-            Text('  ${product.price}'),
-            5.ph,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  5.ph,
+                  Text(
+                    product.name,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18.sp,
+                    ),
+                  ),
+                  5.ph,
+                  Text(
+                    '${product.price} so\'m',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.sp,
+                    ),
+                  ),
+                  5.ph,
+                ],
+              ),
+            ),
           ],
         ),
       ),
