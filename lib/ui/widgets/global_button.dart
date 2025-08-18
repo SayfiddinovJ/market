@@ -3,14 +3,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/ui/widgets/zoom_tap_animation.dart';
 
 class GlobalButton extends StatelessWidget {
-  const GlobalButton({super.key});
+  const GlobalButton({super.key, required this.title, required this.onTap});
+
+  final String title;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
       child: ZoomTapAnimation(
-        onTap: () {},
+        onTap: onTap,
         child: Container(
           alignment: Alignment.center,
           padding: EdgeInsets.symmetric(vertical: 10.h),

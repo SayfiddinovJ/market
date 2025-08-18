@@ -132,7 +132,8 @@ class _HomeScreenState extends State<HomeScreen>
                       childCount:
                           state.status == Status.loading
                               ? 10
-                              : state.products.length,addAutomaticKeepAlives: true
+                              : state.products.length,
+                      addAutomaticKeepAlives: true,
                     ),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2, // Qatorlar soni
@@ -142,7 +143,14 @@ class _HomeScreenState extends State<HomeScreen>
                     ),
                   ),
                 ),
-                SliverToBoxAdapter(child: GlobalButton()),
+                SliverToBoxAdapter(
+                  child: GlobalButton(
+                    title: 'Barcha mahsulotlar',
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteNames.products);
+                    },
+                  ),
+                ),
               ],
             );
           },

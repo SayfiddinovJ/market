@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/bloc/product_bloc.dart';
 import 'package:market/bloc/product_state.dart';
 import 'package:market/routes/app_routes.dart';
@@ -12,6 +13,7 @@ class AllProductsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        extendBodyBehindAppBar: true,
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
@@ -33,9 +35,22 @@ class AllProductsScreen extends StatelessWidget {
           builder: (context, state) {
             return GridView.count(
               crossAxisCount: 2,
+              mainAxisSpacing: 16.h,
+              childAspectRatio: 0.7,
               children:
                   state.products
-                      .map((e) => ProductCard(product: e, onTap: () {}))
+                      .map(
+                        (e) => ProductCard(
+                          product: e,
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              RouteNames.product,
+                              arguments: e,
+                            );
+                          },
+                        ),
+                      )
                       .toList(),
             );
           },
