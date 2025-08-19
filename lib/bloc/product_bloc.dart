@@ -67,7 +67,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       emit(
         state.copyWith(
           status: Status.success,
-          products: data.data,
+          products: state.products + data.data,
           message: data.error,
         ),
       );
