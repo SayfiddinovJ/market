@@ -26,11 +26,15 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           products: [],
           status: Status.pure,
           message: '',
+          categoryProducts: [],
+          categoryStatus: CategoryStatus.pure,
         ),
       ) {
     on<ProductEvent>((event, emit) {});
     on<GetProductsEvent>(getProducts);
     on<GetRandomProductsEvent>(getRandomProducts);
+    on<GetProductByCategoryEvent>(getProductsByCategory);
+    on<ClearCategoryProductEvent>(clearCategoryProduct);
   }
 
   Future<void> getProducts(
@@ -72,5 +76,35 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         ),
       );
     }
+  }
+
+  Future<void> getProductsByCategory(
+    GetProductByCategoryEvent event,
+    Emitter<ProductState> emit,
+  ) async {
+    emit(state.copyWith(status: Status.loading, message: 'Yuklanmoqda...'));
+    UniversalData data = await productRepo.getProductsByCategory(
+      event.category,
+      page: event.page,
+      limit: event.limit,
+    );
+    if (data.error.isNotEmpty) {
+      emit(state.copyWith(status: Status.failure, message: data.error));
+    } else {
+      emit(
+        state.copyWith(
+          status: Status.success,
+          categoryProducts: state.categoryProducts + data.data,
+          message: data.error,
+        ),
+      );
+    }
+  }
+
+  Future<void> clearCategoryProduct(
+    ClearCategoryProductEvent event,
+    Emitter<ProductState> emit,
+  ) async {
+    emit(state.copyWith(categoryProducts: []));
   }
 }
