@@ -28,6 +28,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           message: '',
           categoryProducts: [],
           categoryStatus: CategoryStatus.pure,
+          searchedProducts: [],
         ),
       ) {
     on<ProductEvent>((event, emit) {});
@@ -35,6 +36,8 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<GetRandomProductsEvent>(getRandomProducts);
     on<GetProductByCategoryEvent>(getProductsByCategory);
     on<ClearCategoryProductEvent>(clearCategoryProduct);
+    on<SearchProductByCategoryEvent>(searchProductsByCategory);
+    on<SearchProductEvent>(searchProduct);
   }
 
   Future<void> getProducts(
@@ -95,6 +98,47 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         state.copyWith(
           status: Status.success,
           categoryProducts: state.categoryProducts + data.data,
+          message: data.error,
+        ),
+      );
+    }
+  }
+
+  Future<void> searchProductsByCategory(
+    SearchProductByCategoryEvent event,
+    Emitter<ProductState> emit,
+  ) async {
+    emit(state.copyWith(status: Status.loading, message: 'Yuklanmoqda...'));
+    UniversalData data = await productRepo.searchProductsByCategory(
+      event.query,
+      event.category,
+    );
+    if (data.error.isNotEmpty) {
+      emit(state.copyWith(status: Status.failure, message: data.error));
+    } else {
+      emit(
+        state.copyWith(
+          status: Status.success,
+          searchedProducts: state.searchedProducts,
+          message: data.error,
+        ),
+      );
+    }
+  }
+
+  Future<void> searchProduct(
+    SearchProductEvent event,
+    Emitter<ProductState> emit,
+  ) async {
+    emit(state.copyWith(status: Status.loading, message: 'Yuklanmoqda...'));
+    UniversalData data = await productRepo.searchProduct(event.query);
+    if (data.error.isNotEmpty) {
+      emit(state.copyWith(status: Status.failure, message: data.error));
+    } else {
+      emit(
+        state.copyWith(
+          status: Status.success,
+          searchedProducts: state.searchedProducts,
           message: data.error,
         ),
       );
