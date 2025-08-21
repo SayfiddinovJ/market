@@ -84,6 +84,20 @@ class _CategoryScreenState extends State<CategoryScreen>
           ),
           body: BlocBuilder<ProductBloc, ProductState>(
             builder: (context, state) {
+              if (state.categoryProducts.isEmpty &&
+                  state.status == Status.success) {
+                return Center(child: Text('Mahsulotlar topilmadi!'));
+              } else if (state.status == Status.loading) {
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(state.message),
+                      CupertinoActivityIndicator(),
+                    ],
+                  ),
+                );
+              }
               return Column(
                 children: [
                   Expanded(
