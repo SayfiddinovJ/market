@@ -76,7 +76,11 @@ class _CategoryScreenState extends State<CategoryScreen>
             actions: [
               IconButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, RouteNames.search);
+                  Navigator.pushNamed(
+                    context,
+                    RouteNames.searchByCategory,
+                    arguments: widget.name,
+                  );
                 },
                 icon: Icon(Icons.search),
               ),

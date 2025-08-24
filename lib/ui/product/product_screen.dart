@@ -21,8 +21,8 @@ class ProductScreen extends StatelessWidget {
           ),
 
           actions: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.favorite_border)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.upload_outlined)),
+            // IconButton(onPressed: () {}, icon: Icon(Icons.favorite_border)),
+            // IconButton(onPressed: () {}, icon: Icon(Icons.upload_outlined)),
           ],
         ),
         body: SingleChildScrollView(
