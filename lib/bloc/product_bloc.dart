@@ -5,6 +5,7 @@ import 'package:market/data/models/product/product_model.dart';
 import 'package:market/data/models/status.dart';
 import 'package:market/data/models/universal_data.dart';
 import 'package:market/repository/product_repo.dart';
+import 'package:rxdart/rxdart.dart';
 
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
   final ProductRepo productRepo;
@@ -37,7 +38,11 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<GetProductByCategoryEvent>(getProductsByCategory);
     on<ClearCategoryProductEvent>(clearCategoryProduct);
     on<SearchProductByCategoryEvent>(searchProductsByCategory);
-    on<SearchProductEvent>(searchProduct);
+    on<SearchProductEvent>(
+      searchProduct,
+      transformer: debounce(const Duration(seconds: 1)),
+    );
+    on<ClearSearchedProductEvent>(clearSearchedProduct);
   }
 
   Future<void> getProducts(
@@ -138,11 +143,15 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       emit(
         state.copyWith(
           status: Status.success,
-          searchedProducts: state.searchedProducts,
+          searchedProducts: data.data,
           message: data.error,
         ),
       );
     }
+  }
+
+  EventTransformer<T> debounce<T>(Duration duration) {
+    return (events, mapper) => events.debounceTime(duration).switchMap(mapper);
   }
 
   Future<void> clearCategoryProduct(
@@ -150,5 +159,12 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     Emitter<ProductState> emit,
   ) async {
     emit(state.copyWith(categoryProducts: []));
+  }
+
+  Future<void> clearSearchedProduct(
+    ClearSearchedProductEvent event,
+    Emitter<ProductState> emit,
+  ) async {
+    emit(state.copyWith(searchedProducts: []));
   }
 }

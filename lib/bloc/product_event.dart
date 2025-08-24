@@ -35,3 +35,5 @@ class SearchProductByCategoryEvent extends ProductEvent {
 }
 
 class ClearCategoryProductEvent extends ProductEvent {}
+
+class ClearSearchedProductEvent extends ProductEvent {}

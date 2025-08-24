@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:market/data/models/product/product_model.dart';
 import 'package:market/data/models/universal_data.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -53,7 +54,11 @@ class ProductRepo {
           .or('name.ilike.%$query%, category.ilike.%$query%')
           .limit(20);
 
-      return UniversalData(data: response.map((json) => ProductModel.fromJson(json)).toList());
+      debugPrint('Response: ${response.toString()}');
+
+      return UniversalData(
+        data: response.map((json) => ProductModel.fromJson(json)).toList(),
+      );
     } catch (error) {
       return UniversalData(error: error.toString());
     }
